@@ -1,5 +1,5 @@
 //
-// dependency: leaflet.js
+// this has a dependency on leaflet.js
 //
 // inputs:
 // hubPoint = a coordinate pair for a hub
@@ -13,7 +13,7 @@
 //
 // 		var hubPoint = [34.4197260467949, -119.85551834106445];
 //
-//		var linePoints = [
+//		var spokeEndsArray = [
 //			[34.42815122218392, -119.84873771667482],
 //			[34.43133699162854, -119.87302780151366],
 //			[34.413849161363814, -119.873628616333],
@@ -21,7 +21,7 @@
 //		];
 //
 // So the function could be called like this:
-// mySpiderDiagram = spokes.create(hubPoint, spokeEndsArray);
+// mySpiderDiagram = spokeCreate(hubPoint, spokeEndsArray);
 //
 // ps - later you could iterate through mySpiderDiagram and add it to the map like so:
 //
@@ -30,11 +30,12 @@
 // }
 //
 
-function create(hubPoint, spokeEndsArray) {
+function spokeCreate(hubPoint, spokeEndsArray) {
 	var numberOfSpokes = spokeEndsArray.length;
 	var spokeCounter = 0;
+	var mySpokesArray = new Array();
+	var mySpoke;
 
-	var myLine = new Array();
 	// array marker
 	while (spokeCounter < numberOfSpokes) {
 			mySpoke = [hubPoint,spokeEndsArray[spokeCounter]];
