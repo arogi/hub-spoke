@@ -1,4 +1,5 @@
 //
+// dependency: leaflet.js
 //
 // inputs:
 // hubPoint = a coordinate pair for a hub
