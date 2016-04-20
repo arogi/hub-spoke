@@ -1,17 +1,22 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Leaflet Quick Start Guide Example</title>
+	<title>Spoke</title>
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script src="spoke.js"></script>
+
 </head>
 <body>
+
 	<div id="mapid" style="width: 600px; height: 400px"></div>
 
-	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
 	<script>
 
 		// make it a choice...
@@ -19,7 +24,7 @@
 
 		// create a function that receives hub and spoke points, returns leaflet polylines
 
-		var mymap = L.map('mapid')
+		var mymap = L.map('mapid');
 
 
 		var hubPoint = [34.4197260467949, -119.85551834106445];
@@ -32,16 +37,14 @@
 			[34.41618580382617, -119.84350204467773]
 		];
 
-		var numberOfSpokes = linePoints.length;
+		var myMarker = L.marker(hubPoint).addTo(mymap);
 
-		var spokeCounter = 0;
-		var myLine = new Array();
-		// array marker
-		while (spokeCounter < numberOfSpokes) {
-				mySpoke = [hubPoint,linePoints[spokeCounter]];
-				myLine[spokeCounter] = L.polyline(mySpoke).addTo(mymap);
-				spokeCounter++;
+		var mySpiderDiagram = spokeCreate(hubPoint, linePoints);
+
+		for (i = 0; i < mySpiderDiagram.length; i++) {
+		   mySpiderDiagram[i].addTo(mymap);
 		}
+
 
 		mymap.fitBounds(linePoints);
 
@@ -49,4 +52,3 @@
 	</script>
 </body>
 </html>
-
