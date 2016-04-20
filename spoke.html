@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+</head>
+<body>
+	<div id="mapid" style="width: 600px; height: 400px"></div>
+
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script>
+
+		// make it a choice...
+		// return as a GeoJSON --or-- as an array of Leaflet polylines
+
+		// create a function that receives hub and spoke points, returns leaflet polylines
+
+		var mymap = L.map('mapid')
+
+
+		var hubPoint = [34.4197260467949, -119.85551834106445];
+		// var myPoint = L.marker(hubPoint).addTo(mymap);
+
+		var linePoints = [
+			[34.42815122218392, -119.84873771667482],
+			[34.43133699162854, -119.87302780151366],
+			[34.413849161363814, -119.873628616333],
+			[34.41618580382617, -119.84350204467773]
+		];
+
+		var numberOfSpokes = linePoints.length;
+
+		var spokeCounter = 0;
+		var myLine = new Array();
+		// array marker
+		while (spokeCounter < numberOfSpokes) {
+				mySpoke = [hubPoint,linePoints[spokeCounter]];
+				myLine[spokeCounter] = L.polyline(mySpoke).addTo(mymap);
+				spokeCounter++;
+		}
+
+		mymap.fitBounds(linePoints);
+
+
+	</script>
+</body>
+</html>
+
