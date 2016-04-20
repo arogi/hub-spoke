@@ -52,7 +52,6 @@ function spokeCreate(hubPoint, spokeEndsArray) {
 	var mySpokesArray = new Array();
 	var mySpoke;
 
-	// array marker
 	while (spokeCounter < numberOfSpokes) {
 			mySpoke = [hubPoint,spokeEndsArray[spokeCounter]];
 			mySpokesArray[spokeCounter] = L.polyline(mySpoke);
