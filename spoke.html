@@ -29,7 +29,7 @@
 			[34.41618580382617, -119.84350204467773]
 		];
 
-		var myMarker = L.marker(hubPoint).addTo(mymap);
+		//var myMarker = L.marker(hubPoint).addTo(mymap);
 
 		var mySpiderDiagram = spokeCreate(hubPoint, linePoints);
 
@@ -37,6 +37,17 @@
 		   mySpiderDiagram[i].addTo(mymap);
 		}
 
+		var redIcon = L.icon({
+		    iconUrl: 'reddot.png',
+
+		    iconSize:     [8, 8], // size of the icon
+		    iconAnchor:   [4, 4], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-4, -4] // point from which the popup should open relative to the iconAnchor
+		});
+
+		var happy = L.marker([34.4197260467949, -119.85551834106445], {draggable:'true', icon:redIcon});
+
+		happy.addTo(mymap);
 
 		mymap.fitBounds(linePoints);
 
